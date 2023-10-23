@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Memes</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/256/3480/3480315.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr"></script>
+    <script src="https://kit.fontawesome.com/0f8a043ef9.js" crossorigin="anonymous"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bricolage+Grotesque:opsz,wght@12..96,200&family=Caveat:wght@600&family=Golos+Text&family=Handjet:wght@900&family=Poppins:wght@500&family=Ysabeau+SC&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+<body>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+    <header>
+      
+        <h1 class="mi-titulo animate__animated animate__bounceInLeft">GENERADOR DE MEMES</h1>
+        <div class="menu-botones">
+            <button class="btn" id="img-btn" style="cursor: pointer"><img style="width: 15px; height: 15px;"
+                    src="imagenes/add.png" alt="img" class="icono"> Imagen</button>
+            <button class="btn" id="text-btn" style="cursor: pointer"><img class="icono"
+                    style="width: 15px; height: 15px;" src="imagenes/type.png" alt=""> Texto</button>
+            <!--modo oscuro/claro-->
+            <label for="slider" class="switch">
+                <input type="checkbox" id="slider" checked>
+
+                <span class="slider">
+                    <div style="float: left; margin-top: 7px; margin-left: 4px;">
+                        <img style="height: 20px; width: 20px;" src="imagenes/night.png" alt="">
+                    </div>
+                    <div style="float: right; margin-top: 7px; margin-right: 4px;">
+                        <img style="height: 20px; width: 20px;" src="imagenes/sun.png" alt="">
+                    </div>
+                </span>
+
+            </label>
+        </div>
+    </header>
+    <div class="edit-container">
+        <main class="meme-container">
+            <div class="canvas-meme" id="meme">
+                <p class="text-meme" id="top-text">TOP TEXT</p>
+                <div class="imagen-meme" aria-label="Imagen del meme" id="mi-meme"></div>
+                <p class="text-meme" id="btn-text">BOTTOM TEXT</p>
+            </div>
+            <button style="cursor: pointer; margin-bottom: 10px;" class="btn grow btn-download" id="btn-download">
+                <img style="width: 15px; height: 15px;margin-right: 3px;" src="imagenes/download.png" alt=""
+                    class="icono"> Downloader
+                meme
+            </button>
+        </main>
+        <!--menu texto e imagen-->
+        <aside class="aside hidden animate__animated animate__backInDown" id="panel-aside">
+            <div class="contenedor-cerrar">
+                <button class="cerrar-button flicker">X</button>
+            </div>
+            <!--filtro texto-->
+            <section id="panel-texto" class="panel-text">
+                <h2 class="titulo-aside">TEXTO</h2>
+                <h3 class="titulo">Superior</h3>
+                <input type="text" name="top text editor" id="input-text-top" placeholder="Top text" maxlength="40"
+                    class="input-text">
+                <div class="check">
+                    <input type="checkbox" name="checkbox" id="check-text-top">
+                    <label for="check-text-top" class="valor-color">Sin texto superior</label>
+                </div>
+                <h3 class="titulo">Inferior</h3>
+                <input type="text" name="bottom text editor" id="input-text-btn" placeholder="Bottom text"
+                    maxlength="40" class="input__get focus hover transition input-text">
+                <div class="check">
+                    <input type="checkbox" name="checkbox" id="check-text-btn">
+                    <label for="check-text-btn" class="valor-color">Sin texto inferior</label>
+                </div>
+                <h3 class="titulo">Fuente</h3>
+                <select name="font family" id="text-select" class="filtros-simples select-texto">
+                    <option value="Arial">Arial</option>
+                    <option value="Arial Black">Arial Black</option>
+                    <option value="American Typewrite">American Typewrite</option>
+                    <option value="Andale Mono">Andale Mono</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
+                    <option value="Helvetica">Helvetica</option>
+                    <option value="Impact" selected>Impact</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                </select>
+                <div class="alineacion">
+                    <input type="number" name="number" id="size" class="input-size" min="12" value="40">
+                    <button style="cursor: pointer; font-size: 15px; padding:2px" id="izq">
+                        <i class="fas fa-align-left" aria-hidden="true"></i>
+                    </button>
+                    <button style="cursor: pointer; font-size: 15px; padding:2px" id="central">
+                        <i class="fas fa-align-center" aria-hidden="true"></i>
+                    </button>
+                    <button style="cursor: pointer; font-size: 15px; padding:2px" id="der" style="font-size: 20px;">
+                        <i class="fas fa-align-right" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="container-color">
+                    <!--color letras-->
+                    <article id="text__color">
+                        <h3 class="titulo">Color</h3>
+                        <img class="picker" style="min-width:23px;min-height:23px"
+                            src="chrome-extension://ohcpnigalekghcmgcdcenkpelffpdolg/img/icon16.png"
+                            title="Select with ColorPick Eyedropper - See advanced option: &quot;Add ColorPick Eyedropper near input[type=color] fields on websites&quot;">
+                        <button class="btn-colores">
+                            <input type="color" name="color text" id="color-text" value="#000000" class="input-color">
+                        </button>
+                        <span class="span-color" id="color-text-span">#000000</span>
+                    </article>
+                    <!--<<<<<<<<<<<<<<<< FONDO LETRAS>>>>>>>>>>>>>>>>-->
+                    <article id="font__color">
+                        <h3 class="titulo">Fondo</h3>
+                        <img class="picker" style="min-width:23px;min-height:23px"
+                            src="chrome-extension://ohcpnigalekghcmgcdcenkpelffpdolg/img/icon16.png"
+                            title="Select with ColorPick Eyedropper - See advanced option: &quot;Add ColorPick Eyedropper near input[type=color] fields on websites&quot;">
+                        <button class="btn-colores">
+                            <input type="color" name="background text" id="fondo-text" value="#FFFFFF"
+                                class="input-color">
+                        </button>
+                        <span class="span-color" id="fondo-text-span">#FFFFFF</span>
+                    </article>
+                </div>
+                <div class="check">
+                    <input type="checkbox" name="checkbox" id="check-transparente">
+                    <label for="check-transparente" class="valor-color">Fondo transparente</label>
+                </div>
+                <!--<<<<<<<<<<<<<<<<<CONTORNOS>>>>>>>>>>>>>>>>>-->
+                <div class="panel__outline">
+                    <h3 class="titulo">Contorno</h3>
+                    <button style="cursor: pointer" id="btn-ninguno" class="btn-contorno">Ninguno</button>
+                    <button style="cursor: pointer" id="btn-claro" class="btn-contorno">Claro</button>
+                    <button style="cursor: pointer" id="btn-oscuro" class="btn-contorno">Oscuro</button>
+                </div>
+                <div>
+                    <h3 class="titulo">Espaciado</h3>
+                    <input type="number" name="spacing" id="input-espaciado" class="espaciado" min="10" max="50"
+                        value="35">
+                </div>
+                <!--<<<<<<<<<<<<INTERLINEADO<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+                <div>
+                    <h3 class="titulo">Interlineado</h3>
+                    <select id="interlineado" class="interlineado">
+                        <option value="0.8">0.8</option>
+                        <option value="1">1</option>
+                        <option value="1.2" selected>1.2</option>
+                        <option value="1.5">1.5</option>
+                        <option value="2">2</option>
+                        <option value="2.5">2.5</option>
+                    </select>
+                </div>
+
+            </section>
+            <!--filtro imagen-->
+            <section id="panel-img" class="panel-imagen">
+                <h2 class="titulo-aside">IMAGEN</h2>
+                <h3 class="titulo">Url</h3>
+                <input type="text" placeholder="Copiar dirección de imagen" name="Uniform Resource Locator"
+                    class="input-url" id="url-img" />
+                <h3 class=" titulo">Fondo</h3>
+                <article class="fondo">
+
+                    <img class="picker" style="min-width:25px;min-height:25px"
+                        src="chrome-extension://ohcpnigalekghcmgcdcenkpelffpdolg/img/icon16.png"
+                        title="Select with ColorPick Eyedropper - See advanced option: &quot;Add ColorPick Eyedropper near input[type=color] fields on websites&quot;">
+
+                    <input id="btn-bgimagen" type="color" name="background color" style="cursor: pointer" class="color"
+                        value="#000000">
+                    <span id="bgimagen-span" class="valor-color">#FFFFFF</span>
+                    <select name="blend-mode-selector" id="select-bms" class="filtros-simples">
+                        <option value="unset" id="unset">Ninguno</option>
+                        <option value="lighten" id="lighten">Aclarar</option>
+                        <option value="darken" id="darken">Oscurecer</option>
+                        <option value="difference" id="difference">Diferencia</option>
+                        <option value="luminosity" id="luminosity">Luminosidad</option>
+                        <option value="multiply" id="multiply">Multiplicar</option>
+                    </select>
+
+                </article>
+                <article>
+                    <h3 class="titulo">Filtros</h3>
+                    <article class="filter">
+                        <label for="brightness" class="label-filtro">Brillo</label>
+                        <input type="range" id="brightness" name="brightness" class="glow range" value="1" min="0"
+                            max="1" step="0.1" />
+                    </article>
+                    <article class="filter">
+                        <label for="opacity" class="label-filtro">Opacidad</label>
+                        <input type="range" id="opacity" name="opacity" class="opacity range" value="1" min="0" max="1"
+                            step="0.1" />
+                    </article>
+                    <article class="filter">
+                        <label for="contrast" class="label-filtro">Contraste</label>
+                        <input type="range" id="contrast" name="contrast" class="contrast range" value="100" min="100"
+                            max="1000" step="0.01" />
+                    </article>
+                    <article class="filter">
+                        <label for="blur" class="label-filtro">Desenfoque</label>
+                        <input type="range" id="blur" name="blur" class="blur range" value="0" min="0" max="10"
+                            step="0.1" />
+                    </article>
+                    <article class="filter">
+                        <label for="grayscale" class="label-filtro">Escala de grises</label>
+                        <input type="range" id="grayscale" name="grayscale" class="grayscale range" value="0" min="0"
+                            max="100" step="0.01" />
+                    </article>
+                    <article class="filter">
+                        <label for="sepia" class="label-filtro">Sepia</label>
+                        <input type="range" id="sepia" name="sepia" class="sepia range" value="0" min="0" max="100"
+                            step="1" />
+                    </article>
+                    <article class="filter">
+                        <label for="hue" class="label-filtro">Hue</label>
+                        <input type="range" id="hue" name="hue" class="hue range" value="0" min="0" max="359"
+                            step="0.01" />
+                    </article>
+                    <article class="filter">
+                        <label for="saturate" class="label-filtro">Saturado</label>
+                        <input type="range" id="saturate" name="saturate" class="saturate range" value="100" min="100"
+                            max="1000" step="0.1" />
+                    </article>
+                    <article class="filter">
+                        <label for="negative" class="label-filtro">Negativo</label>
+                        <input type="range" id="negative" name="negative" class="negative range" value="0" min="0"
+                            max="100" />
+                    </article>
+                    <button style="cursor: pointer" type="reset" id="reset" class="btn btn-reestablecer">
+                        Reestablecer Filtros
+                    </button>
+                </article>
+            </section>
+        </aside>
+    </div>
+    <footer class="mi-footer">
+        <p class="mag">Made by, Maggie</p>
+        <img src="imagenes/developer.png" style="height: 30px;width: 30px;" class="developer" />
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
