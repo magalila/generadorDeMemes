@@ -39,21 +39,44 @@ header {
   z-index: 10;
   overflow-y: hidden;
 }
-/*  para dispositivos con una pantalla pequeña*/
-@media screen and (max-width: 768px) {
+/* Agregar reglas para 820x1180 y orientación vertical */
+@media (max-width: 820px) {
+  body {
+    font-size: 16px; /* Ajusta el tamaño de fuente base para una mejor legibilidad */
+  }
+
   .edit-container {
-    flex-direction: column-reverse;
+    flex-direction: column; /* Cambia la dirección de los elementos a apilados verticalmente */
   }
+
+  .meme-container {
+    width: 100%; /* Asegura que el contenedor del meme ocupe todo el ancho disponible */
+  }
+
   .aside {
-    width: 100%;
-    max-height: none;
-    position: static;
-    box-shadow: none;
+    width: 100%; /* Asegura que el aside ocupe todo el ancho disponible */
+    max-height: none; /* Elimina la altura máxima para permitir el contenido completo */
+    position: static; /* Elimina cualquier posición fija para que el aside fluya normalmente */
+    box-shadow: none; /* Elimina cualquier sombra si la hubiera */
   }
+
   .menu-botones {
-    justify-content: center;
+    justify-content: center; /* Centra los botones en dispositivos de ancho reducido */
+  }
+
+  .mi-footer {
+    text-align: center; /* Centra el texto del pie de página */
   }
 }
+
+/* Agregar reglas para 912x1368 y orientación vertical */
+@media (min-width: 821px) and (max-width: 912px), (min-height: 1181px) and (max-height: 1368px) {
+  body {
+    font-size: 18px; /* Ajusta el tamaño de fuente base para una mejor legibilidad */
+  }
+}
+
+
 
 .dark-aside {
   background-color: black;
