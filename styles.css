@@ -341,10 +341,11 @@ margin-top: 10px;
   font-family: "Ysabeau SC", sans-serif;
   background-color: var(--fondo-input);
 }
-.alineacion {
+.alineacion, .fondo, .picker {
   display: flex;
   flex-grow: 100%;
 }
+
 .interlineado {
   font-family: "Ysabeau SC", sans-serif;
   width: 100%;
