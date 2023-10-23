@@ -76,17 +76,6 @@ header {
   -webkit-text-stroke-width: 0.3px;
   -webkit-text-stroke-color: black;
 }
-
-.cerrar-button {
-  cursor: pointer;
-  margin: 10px;
-  background: transparent;
-  border: none;
-  font-weight: bold;
-  color: var(--fondo-input);
-  -webkit-text-stroke-width: 0.8px;
-  -webkit-text-stroke-color: black;
-}
 .btn {
   margin: 5px;
   padding: 7px;
@@ -154,6 +143,17 @@ header {
 .contenedor-cerrar {
   display: flex;
   justify-content: flex-end;
+margin-top: 10px;
+}
+.cerrar-button {
+  cursor: pointer;
+
+  background: transparent;
+  border: none;
+  font-weight: bold;
+  color: var(--fondo-input);
+  -webkit-text-stroke-width: 0.8px;
+  -webkit-text-stroke-color: black;
 }
 .mi-titulo {
   text-align: center;
