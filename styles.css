@@ -37,7 +37,7 @@ header {
   right: 0;
   box-shadow: -10px 10px 100px 5px rgba(0, 0, 0, 0.3);
   z-index: 10;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 /*  para dispositivos con una pantalla pequeña*/
 @media screen and (max-width: 768px) {
@@ -367,7 +367,7 @@ margin-top: 10px;
 }
 
 .btn-reestablecer {
-  margin-top: 12px;
+  margin-top: 8px;
 }
 .mag {
   display: block;
