@@ -28,6 +28,24 @@ cerrarButtons.forEach((button) => {
 //url imagen
 const imputUrlImg = document.getElementById("url-img");
 const miMeme = document.getElementById("mi-meme");
+
+// Función que se ejecutará cuando cambie el valor del campo URL
+const updateImage = () => {
+  const imageUrl = imputUrlImg.value;
+  miMeme.style.backgroundImage = `url("${imageUrl}")`;
+  miMeme.style.backgroundSize = "contain";
+  miMeme.style.backgroundRepeat = "no-repeat";
+  miMeme.style.backgroundPosition = "center";
+};
+
+// Evento 'input' para cambios en el campo URL
+imputUrlImg.addEventListener("input", updateImage);
+
+// Evento táctil (touchend) para dispositivos móviles
+imputUrlImg.addEventListener("touchend", updateImage);
+
+/*const imputUrlImg = document.getElementById("url-img");
+const miMeme = document.getElementById("mi-meme");
 imputUrlImg.addEventListener("input", function () {
   const imageUrl = imputUrlImg.value;
   miMeme.style.backgroundImage = `url("${imageUrl}")`;
@@ -35,20 +53,11 @@ imputUrlImg.addEventListener("input", function () {
   miMeme.style.backgroundRepeat = "no-repeat";
   miMeme.style.backgroundPosition = "center";
 });
+// Evento 'input' para cambios en el campo URL
 
-
-imputUrlImg.addEventListener("input", function () {
-  const imageUrl = imputUrlImg.value;
-  miMeme.style.backgroundImage = `url("${imageUrl}")`;
-  miMeme.style.backgroundSize = "contain";
-  miMeme.style.backgroundRepeat = "no-repeat";
-  miMeme.style.backgroundPosition = "center";
-});
-
-// Agregar eventos táctiles
 imputUrlImg.addEventListener("touchend", function (event) {
   // Lógica para manejar el evento táctil
-});
+});*/
 
 //><<<<<<<<<<<<<<<<<<<FONDO>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 //colorpicker
