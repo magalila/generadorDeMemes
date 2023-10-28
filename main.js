@@ -36,6 +36,20 @@ imputUrlImg.addEventListener("input", function () {
   miMeme.style.backgroundPosition = "center";
 });
 
+
+imputUrlImg.addEventListener("input", function () {
+  const imageUrl = imputUrlImg.value;
+  miMeme.style.backgroundImage = `url("${imageUrl}")`;
+  miMeme.style.backgroundSize = "contain";
+  miMeme.style.backgroundRepeat = "no-repeat";
+  miMeme.style.backgroundPosition = "center";
+});
+
+// Agregar eventos táctiles
+imputUrlImg.addEventListener("touchend", function (event) {
+  // Lógica para manejar el evento táctil
+});
+
 //><<<<<<<<<<<<<<<<<<<FONDO>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 //colorpicker
 const colorBtn = document.getElementById("btn-bgimagen");
