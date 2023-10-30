@@ -334,16 +334,10 @@ slider.addEventListener("click", () => {
 });
 setTheme(localStorage.getItem("theme") || preferedColorScheme);
 
-
 //cors
-function solve(){
-  const xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("data").innerHTML = xhttp.responseText;
-      }
-  };
-  xhttp.open("GET", "https://magalila.github.io/generadorDeMemes/", true);
-  xhttp.send();
-}
-solve()
+const myApi = () => {
+  fetch("https://magalila.github.io/generadorDeMemes/")
+    .then((res) => res.json())
+    .then((imputUrlImg) => {});
+};
+myApi();
